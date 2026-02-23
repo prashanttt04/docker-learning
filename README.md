@@ -1,65 +1,86 @@
-🐳 Docker Learning Repository
+# 🐳 Docker Learning Repository
 
-This repository represents my structured hands-on learning of Docker, covering containerization, image management, networking, volumes, Docker Compose, and publishing images to Docker Hub.
+This repository represents my structured hands-on learning of **Docker**, covering:
+
+- Containerization  
+- Image management  
+- Networking  
+- Volumes  
+- Docker Compose  
+- Publishing images to Docker Hub  
+
+---
+
+## 🚀 Docker Hub Profile
+
+🔗 **My Docker Hub Account:**  
+https://app.docker.com/accounts/prashantttt04
+
+---
+
+## 🚀 Published Docker Image
 
 I have successfully built and published a Docker image on Docker Hub:
 
-👉 Docker Hub Image: prashantttt04/estapp
+**Image:**  
+prashantttt04/estapp
 
-📌 What is Docker?
+---
+
+## 📌 What is Docker?
 
 Docker is a containerization platform that packages applications and their dependencies into lightweight, portable containers that run consistently across environments.
 
-❓ Why Do We Need Docker?
+---
 
-Environment consistency
+## ❓ Why Do We Need Docker?
 
-Eliminates dependency conflicts
+- Environment consistency  
+- Eliminates dependency conflicts  
+- Lightweight compared to Virtual Machines  
+- Faster startup time  
+- Simplified deployment  
+- Microservices-friendly architecture  
 
-Lightweight compared to Virtual Machines
+---
 
-Faster startup time
+## 🖼 Docker Images & Containers
 
-Simplified deployment
+### 🔹 Docker Image
+- Read-only template  
+- Built using Dockerfile  
+- Contains application code + dependencies  
 
-Microservices-friendly architecture
+### 🔹 Docker Container
+- Running instance of an image  
+- Isolated execution environment  
+- Shares host OS kernel  
 
-🖼 Docker Images & Containers
-🔹 Docker Image
+---
 
-Read-only template
-
-Built using Dockerfile
-
-Contains app code + dependencies
-
-🔹 Docker Container
-
-Running instance of image
-
-Isolated execution environment
-
-Shares host OS kernel
-
-💻 Docker Installation
+## 💻 Docker Installation
 
 Docker requires a Linux kernel.
 
 On Windows/macOS:
+- Docker Desktop adds a lightweight hypervisor  
+- Runs a minimal Linux distribution internally  
+- Enables containers to run on non-Linux systems  
 
-Docker Desktop adds a lightweight hypervisor
+---
 
-Runs a minimal Linux distribution internally
+## 📚 Important Docker Commands
 
-Enables containers to run on non-Linux systems
-
-📚 Important Docker Commands
-📦 Image Commands
+### 📦 Image Commands
+```bash
 docker pull IMAGE_NAME
 docker pull IMAGE_NAME:version
 docker images
 docker rmi IMAGE_NAME
-🚀 Container Commands
+```
+
+### 🚀 Container Commands
+```bash
 docker run IMAGE_NAME
 docker run -it IMAGE_NAME
 docker run -d IMAGE_NAME
@@ -70,171 +91,187 @@ docker start CONT_NAME
 docker rm CONT_NAME
 docker ps
 docker ps -a
-🔌 Port Mapping
+```
+
+---
+
+## 🔌 Port Mapping
+
+```bash
 docker run -p <host_port>:<container_port> IMAGE_NAME
+```
 
 Example:
-
+```bash
 docker run -p 3000:3000 my-node-app
+```
 
 Allows external access to container services.
 
-🌱 Environment Variables
+---
+
+## 🌱 Environment Variables
+
+```bash
 docker run -e NODE_ENV=production IMAGE_NAME
+```
 
-Pass configuration values inside container.
+Pass configuration values inside the container.
 
-🛠 Troubleshooting Commands
+---
+
+## 🛠 Troubleshooting Commands
+
+```bash
 docker logs CONT_ID
 docker exec -it CONT_ID /bin/bash
 docker exec -it CONT_ID /bin/sh
+```
 
 Used for debugging running containers.
 
-🆚 Docker vs Virtual Machine
-System Layers
+---
 
-Application Layer
-↓
-Host OS Kernel
-↓
-Hardware
+## 🆚 Docker vs Virtual Machine
 
-Docker
+| Feature | Docker | Virtual Machine |
+|----------|---------|----------------|
+| Virtualization Level | Application Layer | Kernel + Application |
+| Uses Host OS Kernel | Yes | No |
+| Weight | Lightweight | Heavy |
+| Boot Time | Fast | Slower |
 
-Uses Host OS Kernel
+---
 
-Virtualizes Application Layer only
-
-Lightweight
-
-Fast boot
-
-Virtual Machine
-
-Virtualizes Kernel + Application
-
-Heavy
-
-Slower
-
-🧱 Dockerfile Instructions (Dockerizing App)
+## 🧱 Dockerfile Instructions (Dockerizing an App)
 
 Common Dockerfile keywords:
 
-FROM → Base image
+- `FROM` → Base image  
+- `WORKDIR` → Set working directory  
+- `COPY` → Copy files  
+- `RUN` → Execute build commands  
+- `CMD` → Default run command  
+- `EXPOSE` → Declare container port  
+- `ENV` → Set environment variable  
 
-WORKDIR → Set working directory
+---
 
-COPY → Copy files
+## 🔨 Build Image
 
-RUN → Execute build commands
-
-CMD → Default run command
-
-EXPOSE → Declare container port
-
-ENV → Set environment variable
-
-🔨 Build Image
+```bash
 docker build -t prashantttt04/testapp .
+```
 
-docker build → Build image
+---
 
--t → Tag image
+## 📤 Push Image to Docker Hub
 
-prashantttt04/testapp → Image name
-
-📤 Push Image to Docker Hub
+```bash
 docker push <image_name>
+```
 
-I have published:
-
+Published image:
+```
 prashantttt04/estapp
-🌐 Docker Networking
+```
+
+---
+
+## 🌐 Docker Networking
+
+```bash
 docker network ls
 docker network create my-network
 docker network connect my-network CONT_NAME
+```
 
-Containers in same network communicate using container names.
+Containers in the same network can communicate using container names.
 
-💾 Docker Volumes
-List Volumes
+---
+
+## 💾 Docker Volumes
+
+### List Volumes
+```bash
 docker volume ls
-Create Volume
+```
+
+### Create Volume
+```bash
 docker volume create VOL_NAME
+```
 
-By default created at:
-
-C:\ProgramData\docker\volumes
-Remove Volume
+### Remove Volume
+```bash
 docker volume rm VOL_NAME
-Remove Unused Volumes
+```
+
+### Remove Unused Volumes
+```bash
 docker volume prune
-🔗 Ways to Connect Volume to Container
-1️⃣ Named Volume
+```
+
+---
+
+## 🔗 Ways to Connect Volume to Container
+
+### 1️⃣ Named Volume
+```bash
 docker run -v VOL_NAME:CONT_DIR
+```
 
-Docker-managed
-
-Reusable
-
-Persistent
-
-2️⃣ Anonymous Volume
+### 2️⃣ Anonymous Volume
+```bash
 docker run -v MOUNT_PATH
+```
 
-Random name
-
-Persistent
-
-Harder to manage
-
-3️⃣ Bind Mount
+### 3️⃣ Bind Mount
+```bash
 docker run -v HOST_DIR:CONT_DIR
+```
 
-Maps host directory directly
+---
 
-Mostly for development
-
-🧩 Volume Mount Syntax
+## 🧩 Volume Mount Syntax
+```bash
 -v <host_path>:<container_path>
-🧱 Layering of Docker Images
+```
 
-Each Dockerfile instruction creates a layer
+---
 
-Layers are cached
+## 🧱 Docker Image Layering
 
-Improves build performance
+- Each Dockerfile instruction creates a layer  
+- Layers are cached  
+- Improves build performance  
+- Reduces rebuild time  
 
-Reduces rebuild time
+---
 
-🐳 Docker Compose
+## 🐳 Docker Compose
 
-Used for multi-container applications.
-
-Start Services
+### ▶ Start Services
+```bash
 docker compose -f fileName.yaml up -d
+```
 
--f fileName.yaml → Specify compose file
-
-up → Create & start containers
-
--d → Detached mode
-
-Stop & Remove Services
+### ⛔ Stop & Remove Services
+```bash
 docker compose -f fileName.yaml down
+```
 
 Removes:
+- Containers  
+- Networks created by Compose  
+- Default network  
 
-Containers
+---
 
-Networks created by Compose
+## 🚀 Dockerizing Node.js Application
 
-Default network
-
-🚀 Dockerizing Node.js Application
-Dockerfile Example
+### Example Dockerfile
+```dockerfile
 FROM node:18
 WORKDIR /app
 COPY package*.json ./
@@ -242,26 +279,20 @@ RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]
-🎯 Key Learnings
+```
 
-Docker architecture
+---
 
-Images & containers
+## 🎯 Key Learnings
 
-Port mapping
-
-Environment variables
-
-Dockerfile instructions
-
-Docker Compose
-
-Volume types
-
-Networking
-
-Docker vs VM
-
-Publishing images
-
-Troubleshooting containers
+- Docker architecture  
+- Images & containers  
+- Port mapping  
+- Environment variables  
+- Dockerfile instructions  
+- Docker Compose  
+- Volume types  
+- Networking  
+- Docker vs VM  
+- Publishing images  
+- Troubleshooting containers  
